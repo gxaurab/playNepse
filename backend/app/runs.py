@@ -4,6 +4,7 @@ from datetime import UTC, datetime
 
 from sqlalchemy.orm import Session
 
+from app.events import publish
 from app.models import CrawlRun, CrawlStatus, CrawlTrigger
 
 
@@ -37,3 +38,5 @@ def track_run(
     finally:
         run.finished_at = datetime.now(UTC)
         db.commit()
+        status_val = run.status.value if hasattr(run.status, "value") else str(run.status)
+        publish("crawl_run", {"id": run.id, "job_type": run.job_type, "status": status_val})

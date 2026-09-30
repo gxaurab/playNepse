@@ -6,5 +6,7 @@ pydantic-settings
 pyyaml
 pyjwt
 bcrypt
+celery
+redis
 pytest
 ruff

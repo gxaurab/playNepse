@@ -1,10 +1,10 @@
 from datetime import date, datetime
 from decimal import Decimal
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict
 
-from app.models import UserRole
+from app.models import CrawlStatus, CrawlTrigger, UserRole
 
 
 class UserOut(BaseModel):
@@ -82,3 +82,27 @@ class PriceOut(BaseModel):
     vwap: Decimal | None
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class CrawlRunOut(BaseModel):
+    id: int
+    job_type: str
+    source: str
+    trigger: CrawlTrigger
+    status: CrawlStatus
+    started_at: datetime | None
+    finished_at: datetime | None
+    items_new: int
+    error: str | None
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class CrawlRunEnqueueIn(BaseModel):
+    job: Literal["prices", "floorsheet"]
+    days: int | None = None
+
+
+class CrawlRunEnqueueOut(BaseModel):
+    task_id: str
+    job: str

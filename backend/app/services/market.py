@@ -10,6 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 
 from app.db import SessionLocal
+from app.events import publish
 from app.models import Company, Floorsheet, Price
 from app.runs import track_run
 
@@ -145,7 +146,9 @@ def backfill_prices(days: int = 45, trigger: str = "manual") -> int:
             time.sleep(0.5)
 
         run.items_new = total_upserted
+        symbols = sorted(symbol_to_id.keys())
 
+    publish("prices", {"symbols": symbols})
     print(f"Trading dates fetched ({len(fetched_dates)}): {fetched_dates}")
     print(f"Trading dates skipped ({len(skipped_dates)}): {skipped_dates}")
     return total_upserted
@@ -208,5 +211,7 @@ def fetch_floorsheet(trigger: str = "manual") -> int:
 
         db.commit()
         run.items_new = inserted_count
+        symbols = sorted(symbol_to_id.keys())
 
+    publish("floorsheet", {"symbols": symbols, "items_new": inserted_count})
     return inserted_count
