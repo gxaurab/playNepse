@@ -6,8 +6,11 @@ from typing import Any
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.auth import router as auth_router
+from app.api.users import router as users_router
 from app.db import init_db
 from app.errors import register_error_handlers
+from app.seed import seed_users
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,6 +21,7 @@ logging.basicConfig(
 @asynccontextmanager
 async def lifespan(_app: FastAPI) -> AsyncGenerator[None, None]:
     init_db()
+    seed_users()
     yield
 
 
@@ -35,6 +39,9 @@ app.add_middleware(
 )
 
 register_error_handlers(app)
+
+app.include_router(auth_router)
+app.include_router(users_router)
 
 
 @app.get("/api/health")

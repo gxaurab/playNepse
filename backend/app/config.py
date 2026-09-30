@@ -12,6 +12,16 @@ class Settings(BaseSettings):
     JWT_SECRET: str
     JWT_EXPIRE_MIN: int = 720
 
+    SEED_ADMIN_EMAIL: str = "admin@playnepse.local"
+    SEED_ADMIN_PASSWORD: str = "admin12345"
+    SEED_ANALYST_EMAIL: str = "analyst@playnepse.local"
+    SEED_ANALYST_PASSWORD: str = "analyst12345"
+    SEED_VIEWER_EMAIL: str = "viewer@playnepse.local"
+    SEED_VIEWER_PASSWORD: str = "viewer12345"
+
+    COOKIE_SECURE: bool = False
+    COOKIE_NAME: str = "access_token"
+
     model_config = SettingsConfigDict(
         env_file=(_BASE_DIR / ".env", ".env"),
         env_file_encoding="utf-8",
