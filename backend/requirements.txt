@@ -8,5 +8,7 @@ pyjwt
 bcrypt
 celery
 redis
+pandas
+numpy
 pytest
 ruff
