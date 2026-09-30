@@ -181,3 +181,6 @@ Add an entry to `config/companies.yaml` (symbol, name, sector, aliases) and rest
 2. Privately host it 
 3. Notifications to Telegram Bot.
 4. Gemini API or some AI integrate to make it analyze for more insights/predictions.
+
+![Tunnel Preview](./tunnel.png)
+
