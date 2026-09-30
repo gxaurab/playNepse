@@ -1,0 +1,10 @@
+fastapi[standard]
+nepse @ git+https://github.com/basic-bgnr/NepseUnofficialApi
+sqlalchemy>=2
+psycopg[binary]
+pydantic-settings
+pyyaml
+pyjwt
+bcrypt
+pytest
+ruff
