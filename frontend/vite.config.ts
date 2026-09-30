@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
+    allowedHosts: ['.trycloudflare.com'],
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
@@ -15,6 +16,9 @@ export default defineConfig({
         ws: true,
       },
     },
+  },
+  preview: {
+    allowedHosts: true,
   },
 })
 
