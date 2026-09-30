@@ -1,0 +1,41 @@
+- symbol: API
+  name: Api Power Company Limited
+  sector: Hydropower
+  aliases:
+    - Api Power
+    - एपीआई पावर
+
+- symbol: HDL
+  name: Himalayan Distillery Limited
+  sector: Manufacturing And Processing
+  aliases:
+    - Himalayan Distillery
+    - हिमालयन डिस्टिलरी
+
+- symbol: NBL
+  name: Nepal Bank Limited
+  sector: Commercial Banks
+  aliases:
+    - Nepal Bank
+    - नेपाल बैंक
+
+- symbol: CBBL
+  name: Chhimek Laghubitta Bittiya Sanstha Limited
+  sector: Microfinance
+  aliases:
+    - Chhimek Laghubitta
+    - छिमेक लघुवित्त
+
+- symbol: SARBTM
+  name: Sarbottam Cement Limited
+  sector: Manufacturing And Processing
+  aliases:
+    - Sarbottam Cement
+    - सर्वोत्तम सिमेन्ट
+
+- symbol: NTC
+  name: Nepal Doorsanchar Company Limited
+  sector: Others
+  aliases:
+    - Nepal Telecom
+    - नेपाल टेलिकम

@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     COOKIE_SECURE: bool = False
     COOKIE_NAME: str = "access_token"
 
+    COMPANIES_FILE: str = "../config/companies.yaml"
+
     model_config = SettingsConfigDict(
         env_file=(_BASE_DIR / ".env", ".env"),
         env_file_encoding="utf-8",
